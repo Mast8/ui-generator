@@ -1,0 +1,142 @@
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      display: flex;
+      min-height: 100vh;
+      background-color: #0f172a;
+      color: #f8fafc;
+    }
+
+    /* Controls Panel */
+    .sidebar {
+      width: 360px;
+      background: #1e293b;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      box-shadow: 4px 0 15px rgba(0, 0, 0, 0.3);
+      z-index: 10;
+      overflow-y: auto;
+    }
+
+    .sidebar h2 {
+      font-size: 1.25rem;
+      color: #38bdf8;
+      margin-bottom: 8px;
+    }
+
+    .control-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .control-group label {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #94a3b8;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    input[type="range"] {
+      width: 100%;
+      accent-color: #38bdf8;
+      cursor: pointer;
+    }
+
+    input[type="color"] {
+      -webkit-appearance: none;
+      border: none;
+      width: 100%;
+      height: 36px;
+      border-radius: 6px;
+      cursor: pointer;
+      background: transparent;
+    }
+
+    /* Main Preview Area */
+    .main-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      background: radial-gradient(circle at 20% 20%, #7c3aed 0%, transparent 40%),
+                  radial-gradient(circle at 80% 80%, #06b6d4 0%, transparent 40%),
+                  #0f172a;
+      padding: 40px;
+      gap: 30px;
+    }
+
+    /* Target Glass Card */
+    .glass-card {
+      width: 380px;
+      padding: 32px;
+      border-radius: 16px;
+      /* Default initial values overwritten dynamically by JS */
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.25);
+      transition: all 0.05s linear;
+    }
+
+    .glass-card h3 {
+      font-size: 1.5rem;
+      margin-bottom: 10px;
+    }
+
+    .glass-card p {
+      font-size: 0.95rem;
+      line-height: 1.5;
+      opacity: 0.9;
+    }
+
+    /* Output Code Block */
+    .code-container {
+      width: 100%;
+      max-width: 500px;
+      background: #1e293b;
+      border-radius: 10px;
+      padding: 16px;
+      position: relative;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    }
+
+    pre {
+      font-family: 'Consolas', 'Fira Code', monospace;
+      font-size: 0.85rem;
+      color: #38bdf8;
+      white-space: pre-wrap;
+      word-break: break-all;
+    }
+
+    .copy-btn {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      background: #38bdf8;
+      color: #0f172a;
+      border: none;
+      padding: 6px 12px;
+      border-radius: 6px;
+      font-weight: bold;
+      font-size: 0.75rem;
+      cursor: pointer;
+      transition: background 0.2s ease;
+    }
+
+    .copy-btn:hover {
+      background: #7dd3fc;
+    }
+  

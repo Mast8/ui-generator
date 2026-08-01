@@ -79,5 +79,16 @@
     const inputs = [blurInput, opacityInput, radiusInput, borderOpacityInput, shadowInput, colorInput];
     inputs.forEach(input => input.addEventListener('input', updateGlassStyle));
 
+    const randomBtn = document.getElementById('random-btn');
+
+    randomBtn.addEventListener('click', () => {
+      blurInput.value = Math.floor(Math.random() * 25);
+      opacityInput.value = (Math.random() * 0.5 + 0.1).toFixed(2);
+      radiusInput.value = Math.floor(Math.random() * 30);
+      borderOpacityInput.value = (Math.random() * 0.4 + 0.1).toFixed(2);
+      shadowInput.value = (Math.random() * 0.4 + 0.1).toFixed(2);
+      updateGlassStyle();
+    });
+
     // Initialize on page load
     updateGlassStyle();
