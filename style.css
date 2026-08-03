@@ -121,22 +121,62 @@
       word-break: break-all;
     }
 
-    .copy-btn {
-      position: absolute;
-      top: 12px;
-      right: 12px;
-      background: #38bdf8;
-      color: #0f172a;
-      border: none;
-      padding: 6px 12px;
-      border-radius: 6px;
-      font-weight: bold;
-      font-size: 0.75rem;
-      cursor: pointer;
-      transition: background 0.2s ease;
-    }
+   /* Base Style for All Action Buttons */
+.copy-btn, 
+#random-btn {
+  background: linear-gradient(135deg, #38bdf8 0%, #0284c7 100%);
+  color: #0f172a;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 0.85rem;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 12px rgba(56, 189, 248, 0.2);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  user-select: none;
+}
 
-    .copy-btn:hover {
-      background: #7dd3fc;
-    }
-  
+/* Position specifically for copy button */
+.copy-btn {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  padding: 6px 14px;
+  font-size: 0.75rem;
+}
+
+/* Sidebar Random Button Spacing */
+#random-btn {
+  width: 100%;
+  margin-top: 8px;
+  padding: 12px 16px;
+  text-transform: uppercase;
+}
+
+/* Hover States */
+.copy-btn:hover, 
+#random-btn:hover {
+  background: linear-gradient(135deg, #7dd3fc 0%, #38bdf8 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(56, 189, 248, 0.4);
+}
+
+/* Click (Active) States */
+.copy-btn:active, 
+#random-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 8px rgba(56, 189, 248, 0.3);
+}
+
+/* Accessibility Focus Ring */
+.copy-btn:focus-visible, 
+#random-btn:focus-visible {
+  outline: 2px solid #38bdf8;
+  outline-offset: 3px;
+}
