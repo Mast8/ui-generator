@@ -55,13 +55,13 @@ function updateGlassStyle() {
 
   // Render CSS Code Text
   const generatedCSS = `.glass-card {
-  background: ${bgRgba};
-  backdrop-filter: blur(${blur}px);
-  -webkit-backdrop-filter: blur(${blur}px);
-  border-radius: ${radius}px;
-  border: 1px solid ${borderRgba};
-  box-shadow: 0 8px 32px 0 ${shadowRgba};
-}`;
+    background: ${bgRgba};
+    backdrop-filter: blur(${blur}px);
+    -webkit-backdrop-filter: blur(${blur}px);
+    border-radius: ${radius}px;
+    border: 1px solid ${borderRgba};
+    box-shadow: 0 8px 32px 0 ${shadowRgba};
+  }`;
 
   cssCode.textContent = generatedCSS;
 }
@@ -95,6 +95,20 @@ randomBtn.addEventListener('click', () => {
   // Randomize color input value
   colorInput.value = getRandomHexColor();
   
+  updateGlassStyle();
+});
+
+// reset
+const resetBtn = document.getElementById('reset-btn');
+
+resetBtn.addEventListener('click', () => {
+  blurInput.value = 10;
+  opacityInput.value = 0.2;
+  radiusInput.value = 16;
+  borderOpacityInput.value = 0.2;
+  shadowInput.value = 0.15;
+  colorInput.value = '#ffffff';
+
   updateGlassStyle();
 });
 
