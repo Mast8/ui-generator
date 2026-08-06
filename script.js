@@ -24,6 +24,26 @@ function getRandomHexColor() {
   return '#' + Math.floor(Math.random() * 16777215).toString(16).padStart(6, '0');
 }
 
+document.addEventListener('DOMContentLoaded', () => {
+  // Target Elements
+  const glassCard = document.getElementById('glass-card');
+  const cssCode = document.getElementById('css-code');
+  const copyBtn = document.getElementById('copy-btn');
+
+  // Controls
+  const blurInput = document.getElementById('blur');
+  const opacityInput = document.getElementById('opacity');
+  const radiusInput = document.getElementById('radius');
+  const borderOpacityInput = document.getElementById('border-opacity');
+  const shadowInput = document.getElementById('shadow');
+  const colorInput = document.getElementById('color');
+
+  // ... (rest of your functions) ...
+
+  // Initialize on page load
+  updateGlassStyle();
+});
+
 // Update Styles & CSS Output Text
 function updateGlassStyle() {
   const blur = blurInput.value;
