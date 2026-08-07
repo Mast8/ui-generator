@@ -38,7 +38,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const shadowInput = document.getElementById('shadow');
   const colorInput = document.getElementById('color');
 
-  // ... (rest of your functions) ...
 
   // Initialize on page load
   updateGlassStyle();

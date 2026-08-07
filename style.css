@@ -123,7 +123,7 @@
 
    /* Base Style for All Action Buttons */
 .copy-btn, 
-#random-btn {
+#random-btn , #reset-btn  {
   background: linear-gradient(135deg, #38bdf8 0%, #0284c7 100%);
   color: #0f172a;
   border: none;
@@ -152,7 +152,7 @@
 }
 
 /* Sidebar Random Button Spacing */
-#random-btn {
+#random-btn, #reset-btn {
   width: 100%;
   margin-top: 8px;
   padding: 12px 16px;
