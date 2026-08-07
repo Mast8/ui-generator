@@ -122,10 +122,10 @@ const resetBtn = document.getElementById('reset-btn');
 
 resetBtn.addEventListener('click', () => {
   blurInput.value = 10;
-  opacityInput.value = 0.2;
+  opacityInput.value = 0.15;
   radiusInput.value = 16;
   borderOpacityInput.value = 0.2;
-  shadowInput.value = 0.15;
+  shadowInput.value = 0.25;
   colorInput.value = '#ffffff';
 
   updateGlassStyle();

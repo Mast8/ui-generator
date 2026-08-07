@@ -161,7 +161,8 @@
 
 /* Hover States */
 .copy-btn:hover, 
-#random-btn:hover {
+#random-btn:hover,
+#reset-btn:hover {
   background: linear-gradient(135deg, #7dd3fc 0%, #38bdf8 100%);
   transform: translateY(-2px);
   box-shadow: 0 6px 20px rgba(56, 189, 248, 0.4);
