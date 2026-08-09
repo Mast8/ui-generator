@@ -11,6 +11,10 @@ const borderOpacityInput = document.getElementById('border-opacity');
 const shadowInput = document.getElementById('shadow');
 const colorInput = document.getElementById('color');
 
+// Action Buttons
+const randomBtn = document.getElementById('random-btn');
+const resetBtn = document.getElementById('reset-btn');
+
 // Helper: Convert Hex color + Alpha to RGBA string
 function hexToRgba(hex, alpha) {
   const r = parseInt(hex.slice(1, 3), 16);
@@ -23,25 +27,6 @@ function hexToRgba(hex, alpha) {
 function getRandomHexColor() {
   return '#' + Math.floor(Math.random() * 16777215).toString(16).padStart(6, '0');
 }
-
-document.addEventListener('DOMContentLoaded', () => {
-  // Target Elements
-  const glassCard = document.getElementById('glass-card');
-  const cssCode = document.getElementById('css-code');
-  const copyBtn = document.getElementById('copy-btn');
-
-  // Controls
-  const blurInput = document.getElementById('blur');
-  const opacityInput = document.getElementById('opacity');
-  const radiusInput = document.getElementById('radius');
-  const borderOpacityInput = document.getElementById('border-opacity');
-  const shadowInput = document.getElementById('shadow');
-  const colorInput = document.getElementById('color');
-
-
-  // Initialize on page load
-  updateGlassStyle();
-});
 
 // Update Styles & CSS Output Text
 function updateGlassStyle() {
@@ -74,13 +59,13 @@ function updateGlassStyle() {
 
   // Render CSS Code Text
   const generatedCSS = `.glass-card {
-    background: ${bgRgba};
-    backdrop-filter: blur(${blur}px);
-    -webkit-backdrop-filter: blur(${blur}px);
-    border-radius: ${radius}px;
-    border: 1px solid ${borderRgba};
-    box-shadow: 0 8px 32px 0 ${shadowRgba};
-  }`;
+  background: ${bgRgba};
+  backdrop-filter: blur(${blur}px);
+  -webkit-backdrop-filter: blur(${blur}px);
+  border-radius: ${radius}px;
+  border: 1px solid ${borderRgba};
+  box-shadow: 0 8px 32px 0 ${shadowRgba};
+}`;
 
   cssCode.textContent = generatedCSS;
 }
@@ -102,24 +87,19 @@ copyBtn.addEventListener('click', () => {
 const inputs = [blurInput, opacityInput, radiusInput, borderOpacityInput, shadowInput, colorInput];
 inputs.forEach(input => input.addEventListener('input', updateGlassStyle));
 
-const randomBtn = document.getElementById('random-btn');
-
+// Randomize Values
 randomBtn.addEventListener('click', () => {
   blurInput.value = Math.floor(Math.random() * 25);
   opacityInput.value = (Math.random() * 0.5 + 0.1).toFixed(2);
   radiusInput.value = Math.floor(Math.random() * 30);
   borderOpacityInput.value = (Math.random() * 0.4 + 0.1).toFixed(2);
   shadowInput.value = (Math.random() * 0.4 + 0.1).toFixed(2);
-  
-  // Randomize color input value
   colorInput.value = getRandomHexColor();
   
   updateGlassStyle();
 });
 
-// reset
-const resetBtn = document.getElementById('reset-btn');
-
+// Reset Values
 resetBtn.addEventListener('click', () => {
   blurInput.value = 10;
   opacityInput.value = 0.15;
@@ -131,5 +111,5 @@ resetBtn.addEventListener('click', () => {
   updateGlassStyle();
 });
 
-// Initialize on page load
+// Initialize styles on initial load
 updateGlassStyle();
