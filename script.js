@@ -15,6 +15,40 @@ const colorInput = document.getElementById('color');
 const randomBtn = document.getElementById('random-btn');
 const resetBtn = document.getElementById('reset-btn');
 
+// element target
+const fontColorInput = document.getElementById('font-color');
+
+// Update PRESETS to include font color
+const PRESETS = {
+  frosted: { blur: 16, saturate: 120, opacity: 0.25, radius: 20, borderWidth: 1, borderOpacity: 0.3, shadow: 0.2, color: '#ffffff', fontColor: '#ffffff' },
+  dark: { blur: 12, saturate: 100, opacity: 0.45, radius: 16, borderWidth: 1, borderOpacity: 0.1, shadow: 0.5, color: '#0f172a', fontColor: '#f8fafc' },
+  neon: { blur: 8, saturate: 180, opacity: 0.2, radius: 12, borderWidth: 2, borderOpacity: 0.6, shadow: 0.4, color: '#a855f7', fontColor: '#f43f5e' }
+};
+
+// update inside updateGlassStyle()
+function updateGlassStyle() {
+  
+  const fontColor = fontColorInput.value;
+
+  
+  glassCard.style.color = fontColor;
+
+  // render CSS Code Text
+  const generatedCSS = `.glass-card {
+  color: ${fontColor};
+  background: ${bgRgba};
+  backdrop-filter: ${backdropFilterVal};
+  -webkit-backdrop-filter: ${backdropFilterVal};
+  border-radius: ${radius}px;
+  border: ${borderWidth}px solid ${borderRgba};
+  box-shadow: 0 8px 32px 0 ${shadowRgba};
+}`;
+
+  cssCode.textContent = generatedCSS;
+  saveToURLHash();
+}
+
+
 // Helper: Convert Hex color + Alpha to RGBA string
 function hexToRgba(hex, alpha) {
   const r = parseInt(hex.slice(1, 3), 16);
