@@ -10,44 +10,18 @@ const radiusInput = document.getElementById('radius');
 const borderOpacityInput = document.getElementById('border-opacity');
 const shadowInput = document.getElementById('shadow');
 const colorInput = document.getElementById('color');
+const fontColorInput = document.getElementById('font-color'); // Font Color Input
 
 // Action Buttons
 const randomBtn = document.getElementById('random-btn');
 const resetBtn = document.getElementById('reset-btn');
 
-// element target
-const fontColorInput = document.getElementById('font-color');
-
-// Update PRESETS to include font color
+// Presets
 const PRESETS = {
-  frosted: { blur: 16, saturate: 120, opacity: 0.25, radius: 20, borderWidth: 1, borderOpacity: 0.3, shadow: 0.2, color: '#ffffff', fontColor: '#ffffff' },
-  dark: { blur: 12, saturate: 100, opacity: 0.45, radius: 16, borderWidth: 1, borderOpacity: 0.1, shadow: 0.5, color: '#0f172a', fontColor: '#f8fafc' },
-  neon: { blur: 8, saturate: 180, opacity: 0.2, radius: 12, borderWidth: 2, borderOpacity: 0.6, shadow: 0.4, color: '#a855f7', fontColor: '#f43f5e' }
+  frosted: { blur: 16, opacity: 0.25, radius: 20, borderOpacity: 0.3, shadow: 0.2, color: '#ffffff', fontColor: '#ffffff' },
+  dark: { blur: 12, opacity: 0.45, radius: 16, borderOpacity: 0.1, shadow: 0.5, color: '#0f172a', fontColor: '#f8fafc' },
+  neon: { blur: 8, opacity: 0.2, radius: 12, borderOpacity: 0.6, shadow: 0.4, color: '#a855f7', fontColor: '#f43f5e' }
 };
-
-// update inside updateGlassStyle()
-function updateGlassStyle() {
-  
-  const fontColor = fontColorInput.value;
-
-  
-  glassCard.style.color = fontColor;
-
-  // render CSS Code Text
-  const generatedCSS = `.glass-card {
-  color: ${fontColor};
-  background: ${bgRgba};
-  backdrop-filter: ${backdropFilterVal};
-  -webkit-backdrop-filter: ${backdropFilterVal};
-  border-radius: ${radius}px;
-  border: ${borderWidth}px solid ${borderRgba};
-  box-shadow: 0 8px 32px 0 ${shadowRgba};
-}`;
-
-  cssCode.textContent = generatedCSS;
-  saveToURLHash();
-}
-
 
 // Helper: Convert Hex color + Alpha to RGBA string
 function hexToRgba(hex, alpha) {
@@ -62,7 +36,7 @@ function getRandomHexColor() {
   return '#' + Math.floor(Math.random() * 16777215).toString(16).padStart(6, '0');
 }
 
-// Update Styles & CSS Output Text
+// Single Update Function
 function updateGlassStyle() {
   const blur = blurInput.value;
   const opacity = opacityInput.value;
@@ -70,20 +44,22 @@ function updateGlassStyle() {
   const borderOpacity = borderOpacityInput.value;
   const shadow = shadowInput.value;
   const hexColor = colorInput.value;
+  const fontColor = fontColorInput ? fontColorInput.value : '#ffffff'; // Fallback check
 
   // Dynamic RGBA Values
   const bgRgba = hexToRgba(hexColor, opacity);
   const borderRgba = hexToRgba('#ffffff', borderOpacity);
   const shadowRgba = `rgba(0, 0, 0, ${shadow})`;
 
-  // Update Label Displays
-  document.getElementById('blur-val').textContent = `${blur}px`;
-  document.getElementById('opacity-val').textContent = opacity;
-  document.getElementById('radius-val').textContent = `${radius}px`;
-  document.getElementById('border-opacity-val').textContent = borderOpacity;
-  document.getElementById('shadow-val').textContent = shadow;
+  // Update Label Displays (if labels exist in HTML)
+  if (document.getElementById('blur-val')) document.getElementById('blur-val').textContent = `${blur}px`;
+  if (document.getElementById('opacity-val')) document.getElementById('opacity-val').textContent = opacity;
+  if (document.getElementById('radius-val')) document.getElementById('radius-val').textContent = `${radius}px`;
+  if (document.getElementById('border-opacity-val')) document.getElementById('border-opacity-val').textContent = borderOpacity;
+  if (document.getElementById('shadow-val')) document.getElementById('shadow-val').textContent = shadow;
 
   // Apply Inline Styles to Card Preview
+  glassCard.style.color = fontColor;
   glassCard.style.background = bgRgba;
   glassCard.style.backdropFilter = `blur(${blur}px)`;
   glassCard.style.webkitBackdropFilter = `blur(${blur}px)`;
@@ -93,6 +69,7 @@ function updateGlassStyle() {
 
   // Render CSS Code Text
   const generatedCSS = `.glass-card {
+  color: ${fontColor};
   background: ${bgRgba};
   backdrop-filter: blur(${blur}px);
   -webkit-backdrop-filter: blur(${blur}px);
@@ -117,9 +94,11 @@ copyBtn.addEventListener('click', () => {
   });
 });
 
-// Attach Event Listeners to inputs
-const inputs = [blurInput, opacityInput, radiusInput, borderOpacityInput, shadowInput, colorInput];
-inputs.forEach(input => input.addEventListener('input', updateGlassStyle));
+// Attach Event Listeners to ALL inputs (including fontColorInput)
+const inputs = [blurInput, opacityInput, radiusInput, borderOpacityInput, shadowInput, colorInput, fontColorInput];
+inputs.forEach(input => {
+  if (input) input.addEventListener('input', updateGlassStyle);
+});
 
 // Randomize Values
 randomBtn.addEventListener('click', () => {
@@ -129,6 +108,7 @@ randomBtn.addEventListener('click', () => {
   borderOpacityInput.value = (Math.random() * 0.4 + 0.1).toFixed(2);
   shadowInput.value = (Math.random() * 0.4 + 0.1).toFixed(2);
   colorInput.value = getRandomHexColor();
+  if (fontColorInput) fontColorInput.value = getRandomHexColor();
   
   updateGlassStyle();
 });
@@ -141,6 +121,7 @@ resetBtn.addEventListener('click', () => {
   borderOpacityInput.value = 0.2;
   shadowInput.value = 0.25;
   colorInput.value = '#ffffff';
+  if (fontColorInput) fontColorInput.value = '#ffffff';
 
   updateGlassStyle();
 });
