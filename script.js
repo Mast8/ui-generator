@@ -126,5 +126,29 @@ resetBtn.addEventListener('click', () => {
   updateGlassStyle();
 });
 
+// Target the button group
+const buttonGroup = document.querySelector('.button-group');
+
+if (buttonGroup) {
+  buttonGroup.addEventListener('click', (e) => {
+    // Determine preset key from button ID (e.g., 'frosted-btn' -> 'frosted')
+    const presetKey = e.target.id.replace('-btn', '');
+    const preset = PRESETS[presetKey];
+
+    if (preset) {
+      blurInput.value = preset.blur;
+      opacityInput.value = preset.opacity;
+      radiusInput.value = preset.radius;
+      borderOpacityInput.value = preset.borderOpacity;
+      shadowInput.value = preset.shadow;
+      colorInput.value = preset.color;
+      if (fontColorInput) fontColorInput.value = preset.fontColor;
+
+      updateGlassStyle();
+    }
+  });
+}
+
+
 // Initialize styles on initial load
 updateGlassStyle();
