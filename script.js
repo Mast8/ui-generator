@@ -20,7 +20,7 @@ const resetBtn = document.getElementById('reset-btn');
 const PRESETS = {
   frosted: { blur: 16, opacity: 0.25, radius: 20, borderOpacity: 0.3, shadow: 0.2, color: '#ffffff', fontColor: '#ffffff' },
   dark: { blur: 12, opacity: 0.45, radius: 16, borderOpacity: 0.1, shadow: 0.5, color: '#0f172a', fontColor: '#f8fafc' },
-  neon: { blur: 8, opacity: 0.2, radius: 12, borderOpacity: 0.6, shadow: 0.4, color: '#a855f7', fontColor: '#f43f5e' }
+  neon: { blur: 10, opacity: 0.3, radius: 12, borderOpacity: 0.8, shadow: 0.5, color: '#00f0ff', fontColor: '#ffffff' }
 };
 
 // Helper: Convert Hex color + Alpha to RGBA string
