@@ -12,6 +12,38 @@
   <aside class="sidebar">
     <h2>Glass Controls</h2>
 
+    <!-- Preset Buttons -->
+    <div class="control-group">
+      <label>Presets</label>
+      <div class="button-group">
+        <button type="button" id="frosted-btn">Frosted</button>
+        <button type="button" id="dark-btn">Dark</button>
+        <button type="button" id="neon-btn">Neon</button>
+      </div>
+    </div>
+
+    <!-- Background Switcher -->
+    <div class="control-group">
+      <label for="bg-select">Preview Background</label>
+      <select id="bg-select">
+        <option value="gradient-aurora">Aurora Gradient</option>
+        <option value="gradient-cyber">Cyberpunk Glow</option>
+        <option value="gradient-sunset">Sunset Mesh</option>
+        <option value="dark-grid">Dark Grid Pattern</option>
+      </select>
+    </div>
+
+    <!-- Card Layout Selector -->
+    <div class="control-group">
+      <label for="card-type-select">Card Layout</label>
+      <select id="card-type-select">
+        <option value="basic">Standard Card</option>
+        <option value="login">Login Form</option>
+        <option value="pricing">Pricing Badge</option>
+      </select>
+    </div>
+
+    <!-- Sliders -->
     <div class="control-group">
       <label for="blur">Blur Intensity <span id="blur-val">10px</span></label>
       <input type="range" id="blur" min="0" max="25" value="10">
@@ -37,23 +69,17 @@
       <input type="range" id="shadow" min="0" max="1" step="0.01" value="0.25">
     </div>
 
+    <!-- Color Pickers -->
     <div class="control-group">
       <label for="color">Glass Tint Color</label>
       <input type="color" id="color" value="#ffffff">
     </div>
+    
     <div class="control-group">
       <label for="font-color">Font Color</label>
       <input type="color" id="font-color" value="#ffffff">
     </div>
 
-    <div class="control-group">
-      <label>Presets</label>
-      <div class="button-group">
-        <button type="button" id="frosted-btn">Frosted</button>
-        <button type="button" id="dark-btn">Dark</button>
-        <button type="button" id="neon-btn">Neon</button>
-      </div>
-    </div>
     <!-- Action Buttons Row -->
     <div class="button-group">
       <button type="button" id="random-btn">Random</button>
@@ -63,17 +89,25 @@
   </aside>
 
   <!-- Preview Area -->
-  <main class="main-content">
+  <main class="main-content gradient-aurora" id="main-content">
     
+    <!-- Dynamic Target Glass Card -->
     <div class="glass-card" id="glass-card">
-      <h3>Frosted Glass UI</h3>
-      <p>Adjust the controls on the left panel to modify the blur, opacity, tint, and borders in real-time.</p>
+      <div id="card-content">
+        <h3>Frosted Glass UI</h3>
+        <p>Adjust the controls on the left panel to modify the blur, opacity, tint, and borders in real-time.</p>
+      </div>
     </div>
 
-    
-    <!-- Generated CSS Output -->
+    <!-- Code Output Container with Format Switcher -->
     <div class="code-container">
-      <button type="button" class="copy-btn" id="copy-btn">Copy CSS</button>
+      <div class="code-header">
+        <div class="format-tabs">
+          <button type="button" class="tab-btn active" data-format="css">CSS</button>
+          <button type="button" class="tab-btn" data-format="tailwind">Tailwind</button>
+        </div>
+        <button type="button" class="copy-btn" id="copy-btn">Copy Code</button>
+      </div>
       <pre><code id="css-code"></code></pre>
     </div>
 
